@@ -49,10 +49,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "scripts": {
-      "start": "node k3y_schedule.js",
-      "test": "echo \"Error: no test specified\" && exit 1"
-    },
+    "start": "node k3y_schedule.js",
+    "build": "echo 'No build step required'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
