@@ -1,11 +1,12 @@
 const axios = require("axios");
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
-const http = require("http");
 
 // Configuration
 const url = "https://www.skccgroup.com/k3y/slot_list.php";
 const k3yArea = "K3Y/4"; // Specify the K3Y area to analyze
+//const interval = 60000; // Run every 60 seconds
+const interval = 600000; // Run every 10 mins
 
 // Function to fetch and parse the HTML page
 async function fetchTableData() {
@@ -54,11 +55,13 @@ function generateHours(startTime, endTime) {
 // Convert UTC time to EST
 function convertToEST(utcTime) {
   const utcDate = new Date(`1970-01-01T${utcTime}:00Z`);
+
+  // Use the Intl.DateTimeFormat API to automatically adjust for DST
   return new Intl.DateTimeFormat("en-US", {
     timeZone: "America/New_York",
     hour: "2-digit",
     minute: "2-digit",
-    hour12: true,
+    hour12: true, // 24-hour format (can be changed to true for 12-hour format)
   }).format(utcDate);
 }
 
@@ -108,7 +111,6 @@ function findGaps(data) {
   return gaps;
 }
 
-// Generate HTML content
 function generateHTML(gaps) {
   const title = `Open Slots for ${k3yArea}`;
   let previousDate = null;
@@ -123,7 +125,7 @@ function generateHTML(gaps) {
           ? `<tr class="date-separator"><td colspan="3"><hr></td></tr>`
           : "") +
         `<tr>
-            <td>${gap.date}</td>
+            <td>1-${gap.date}</td>
             <td>${gap.openSlotUTC}</td>
             <td>${gap.openSlotEST}</td>
         </tr>`
@@ -151,12 +153,17 @@ function generateHTML(gaps) {
             }
             .container {
                 width: 100%;
-                max-width: 800px;
+                max-width: 40%;
                 padding: 20px;
                 background-color: #ffffff;
                 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
                 border-radius: 8px;
                 position: relative;
+            }
+            @media (max-width: 768px) {
+                .container {
+                    max-width: 90%;
+                }
             }
             h1 {
                 text-align: center;
@@ -184,6 +191,23 @@ function generateHTML(gaps) {
             tr:hover {
                 background-color: #e9ecef;
             }
+            .button-container {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+            }
+            .button {
+                background-color: #007bff;
+                color: white;
+                border: none;
+                padding: 10px 15px;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 14px;
+            }
+            .button:hover {
+                background-color: #0056b3;
+            }
             .date-separator td {
                 padding: 0;
                 border: none;
@@ -193,29 +217,13 @@ function generateHTML(gaps) {
                 border-top: 2px solid #6c757d;
                 margin: 0;
             }
-            .copy-button {
-                position: absolute;
-                top: 10px;
-                right: 10px;
-                background-color: #f8f9fa;
-                color: #007bff;
-                border: 1px solid #007bff;
-                padding: 5px 10px;
-                font-size: 12px;
-                border-radius: 5px;
-                cursor: pointer;
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-                transition: background-color 0.3s ease, color 0.3s ease;
-            }
-            .copy-button:hover {
-                background-color: #007bff;
-                color: white;
-            }
         </style>
     </head>
     <body>
         <div class="container">
-            <button class="copy-button" onclick="copyTableToClipboard()">Copy</button>
+            <div class="button-container">
+                <button class="button" onclick="copyTableToClipboard()">Copy to Clipboard</button>
+            </div>
             <h1>${title}</h1>
             <table>
                 <thead>
@@ -265,30 +273,20 @@ function generateHTML(gaps) {
   `;
 }
 
+// Main function to fetch data, process gaps, and generate HTML
+async function main() {
+  const data = await fetchTableData();
+  const gaps = findGaps(data);
+  const htmlContent = generateHTML(gaps);
 
+  // Save the HTML to a file
+  const fs = require("fs");
+  fs.writeFileSync("k3y_schedule.html", htmlContent, "utf8");
+  console.log("Updated k3y_schedule.html");
 
-// HTTP server to serve the HTML
-const server = http.createServer(async (req, res) => {
-  if (req.url === "/") {
-    try {
-      const data = await fetchTableData();
-      const gaps = findGaps(data);
-      const htmlContent = generateHTML(gaps);
+  // Schedule the next run
+  setTimeout(main, interval);
+}
 
-      res.writeHead(200, { "Content-Type": "text/html" });
-      res.end(htmlContent);
-    } catch (error) {
-      res.writeHead(500, { "Content-Type": "text/plain" });
-      res.end("An error occurred while generating the schedule.");
-    }
-  } else {
-    res.writeHead(404, { "Content-Type": "text/plain" });
-    res.end("404 Not Found");
-  }
-});
-
-// Start the server
-const PORT = process.env.PORT || 3000;
-server.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}/`);
-});
+// Start the program
+main();
