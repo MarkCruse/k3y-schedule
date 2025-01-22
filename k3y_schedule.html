@@ -1,0 +1,282 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Open Slots for K3Y/4</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f8f9fa;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+            }
+            .container {
+                width: 100%;
+                max-width: 40%;
+                padding: 20px;
+                background-color: #ffffff;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                border-radius: 8px;
+                position: relative;
+            }
+            @media (max-width: 768px) {
+                .container {
+                    max-width: 90%;
+                }
+            }
+            h1 {
+                text-align: center;
+                color: #343a40;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 20px 0;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                font-size: 14px;
+            }
+            th, td {
+                padding: 10px;
+                border: 1px solid #dee2e6;
+                text-align: center;
+            }
+            th {
+                background-color: #6c757d;
+                color: white;
+            }
+            tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+            tr:hover {
+                background-color: #e9ecef;
+            }
+            .button-container {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+            }
+            .button {
+                background-color: #007bff;
+                color: white;
+                border: none;
+                padding: 10px 15px;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 14px;
+            }
+            .button:hover {
+                background-color: #0056b3;
+            }
+            .date-separator td {
+                padding: 0;
+                border: none;
+            }
+            .date-separator hr {
+                border: none;
+                border-top: 2px solid #6c757d;
+                margin: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="button-container">
+                <button class="button" onclick="copyTableToClipboard()">Copy to Clipboard</button>
+            </div>
+            <h1>Open Slots for K3Y/4</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Open Slot (UTC)</th>
+                        <th>Open Slot (EST)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="date-separator"><td colspan="3"><hr></td></tr><tr>
+            <td>1-21</td>
+            <td>12:00 - 13:00 UTC</td>
+            <td>07:00 AM - 08:00 AM</td>
+        </tr><tr class="date-separator"><td colspan="3"><hr></td></tr><tr>
+            <td>1-22</td>
+            <td>13:00 - 14:00 UTC</td>
+            <td>08:00 AM - 09:00 AM</td>
+        </tr><tr>
+            <td>1-22</td>
+            <td>17:00 - 18:00 UTC</td>
+            <td>12:00 PM - 01:00 PM</td>
+        </tr><tr class="date-separator"><td colspan="3"><hr></td></tr><tr>
+            <td>1-24</td>
+            <td>02:00 - 03:00 UTC</td>
+            <td>09:00 PM - 10:00 PM</td>
+        </tr><tr>
+            <td>1-24</td>
+            <td>20:00 - 21:00 UTC</td>
+            <td>03:00 PM - 04:00 PM</td>
+        </tr><tr class="date-separator"><td colspan="3"><hr></td></tr><tr>
+            <td>1-25</td>
+            <td>20:00 - 21:00 UTC</td>
+            <td>03:00 PM - 04:00 PM</td>
+        </tr><tr>
+            <td>1-25</td>
+            <td>21:00 - 22:00 UTC</td>
+            <td>04:00 PM - 05:00 PM</td>
+        </tr><tr class="date-separator"><td colspan="3"><hr></td></tr><tr>
+            <td>1-26</td>
+            <td>12:00 - 13:00 UTC</td>
+            <td>07:00 AM - 08:00 AM</td>
+        </tr><tr>
+            <td>1-26</td>
+            <td>13:00 - 14:00 UTC</td>
+            <td>08:00 AM - 09:00 AM</td>
+        </tr><tr>
+            <td>1-26</td>
+            <td>15:00 - 16:00 UTC</td>
+            <td>10:00 AM - 11:00 AM</td>
+        </tr><tr>
+            <td>1-26</td>
+            <td>16:00 - 17:00 UTC</td>
+            <td>11:00 AM - 12:00 PM</td>
+        </tr><tr class="date-separator"><td colspan="3"><hr></td></tr><tr>
+            <td>1-27</td>
+            <td>15:00 - 16:00 UTC</td>
+            <td>10:00 AM - 11:00 AM</td>
+        </tr><tr>
+            <td>1-27</td>
+            <td>16:00 - 17:00 UTC</td>
+            <td>11:00 AM - 12:00 PM</td>
+        </tr><tr>
+            <td>1-27</td>
+            <td>17:00 - 18:00 UTC</td>
+            <td>12:00 PM - 01:00 PM</td>
+        </tr><tr>
+            <td>1-27</td>
+            <td>20:00 - 21:00 UTC</td>
+            <td>03:00 PM - 04:00 PM</td>
+        </tr><tr class="date-separator"><td colspan="3"><hr></td></tr><tr>
+            <td>1-28</td>
+            <td>12:00 - 13:00 UTC</td>
+            <td>07:00 AM - 08:00 AM</td>
+        </tr><tr>
+            <td>1-28</td>
+            <td>18:00 - 19:00 UTC</td>
+            <td>01:00 PM - 02:00 PM</td>
+        </tr><tr>
+            <td>1-28</td>
+            <td>19:00 - 20:00 UTC</td>
+            <td>02:00 PM - 03:00 PM</td>
+        </tr><tr>
+            <td>1-28</td>
+            <td>20:00 - 21:00 UTC</td>
+            <td>03:00 PM - 04:00 PM</td>
+        </tr><tr class="date-separator"><td colspan="3"><hr></td></tr><tr>
+            <td>1-29</td>
+            <td>00:00 - 01:00 UTC</td>
+            <td>07:00 PM - 08:00 PM</td>
+        </tr><tr>
+            <td>1-29</td>
+            <td>01:00 - 02:00 UTC</td>
+            <td>08:00 PM - 09:00 PM</td>
+        </tr><tr>
+            <td>1-29</td>
+            <td>19:00 - 20:00 UTC</td>
+            <td>02:00 PM - 03:00 PM</td>
+        </tr><tr>
+            <td>1-29</td>
+            <td>20:00 - 21:00 UTC</td>
+            <td>03:00 PM - 04:00 PM</td>
+        </tr><tr>
+            <td>1-29</td>
+            <td>21:00 - 22:00 UTC</td>
+            <td>04:00 PM - 05:00 PM</td>
+        </tr><tr>
+            <td>1-29</td>
+            <td>22:00 - 23:00 UTC</td>
+            <td>05:00 PM - 06:00 PM</td>
+        </tr><tr>
+            <td>1-29</td>
+            <td>23:00 - 00:00 UTC</td>
+            <td>06:00 PM - 07:00 PM</td>
+        </tr><tr class="date-separator"><td colspan="3"><hr></td></tr><tr>
+            <td>1-30</td>
+            <td>00:00 - 01:00 UTC</td>
+            <td>07:00 PM - 08:00 PM</td>
+        </tr><tr>
+            <td>1-30</td>
+            <td>01:00 - 02:00 UTC</td>
+            <td>08:00 PM - 09:00 PM</td>
+        </tr><tr>
+            <td>1-30</td>
+            <td>17:00 - 18:00 UTC</td>
+            <td>12:00 PM - 01:00 PM</td>
+        </tr><tr>
+            <td>1-30</td>
+            <td>18:00 - 19:00 UTC</td>
+            <td>01:00 PM - 02:00 PM</td>
+        </tr><tr>
+            <td>1-30</td>
+            <td>19:00 - 20:00 UTC</td>
+            <td>02:00 PM - 03:00 PM</td>
+        </tr><tr>
+            <td>1-30</td>
+            <td>20:00 - 21:00 UTC</td>
+            <td>03:00 PM - 04:00 PM</td>
+        </tr><tr>
+            <td>1-30</td>
+            <td>21:00 - 22:00 UTC</td>
+            <td>04:00 PM - 05:00 PM</td>
+        </tr><tr class="date-separator"><td colspan="3"><hr></td></tr><tr>
+            <td>1-31</td>
+            <td>00:00 - 01:00 UTC</td>
+            <td>07:00 PM - 08:00 PM</td>
+        </tr><tr>
+            <td>1-31</td>
+            <td>19:00 - 20:00 UTC</td>
+            <td>02:00 PM - 03:00 PM</td>
+        </tr><tr>
+            <td>1-31</td>
+            <td>20:00 - 21:00 UTC</td>
+            <td>03:00 PM - 04:00 PM</td>
+        </tr>
+                </tbody>
+            </table>
+        </div>
+        <script>
+            function copyTableToClipboard() {
+                const table = document.querySelector("table");
+                const rows = Array.from(table.rows);
+                const maxLengths = [7, 25, 25]; // Max lengths for each column (adjustable)
+                
+                // Format text with consistent column widths
+                const text = rows
+                    .map((row) =>
+                        Array.from(row.cells)
+                            .map((cell, i) =>
+                                cell.innerText.padEnd(maxLengths[i], " ")
+                            )
+                            .join("   ") // Column separator
+                    )
+                    .join("\n");  // Use escaped newline for better formatting
+                
+                if (navigator.clipboard) {
+                    navigator.clipboard.writeText(text)
+                        .then(() => {
+                            alert("Table copied to clipboard!");
+                        })
+                        .catch((err) => {
+                            alert("Failed to copy table: " + err);
+                        });
+                } else {
+                    alert("Clipboard access is not supported.");
+                }
+            }
+        </script>
+    </body>
+    </html>
+  
